@@ -1,0 +1,78 @@
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.start{
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 5rem;
+  margin-bottom: 0;
+}
+
+.score {
+  margin-top: 0%;
+
+ }
+
+.game {
+  width: 800px;
+  height: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  margin-left: 442px;
+
+}
+
+.hole {
+  flex: 1 0 33.33%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 1px solid;
+}
+
+.hole:after {
+  display: block;
+  background: rgb(0, 0, 0) bottom center no-repeat;
+  background-size: contain;
+  content: '';
+  width: 120px;
+  height:70px;
+  position: absolute;
+  z-index: 2;
+  bottom: -30px;
+}
+
+.mole {
+  background: red bottom center no-repeat;
+  position: absolute;
+  top: 100%;
+  width: 120px;
+  height: 120px;
+  transition:all 0.3s ease;
+}
+
+.hole.up .mole {
+  top: 0;
+}
+
+button{
+  background: rgba(190, 19, 19, 0.2);
+  border: red;
+  font-size: 3rem;
+  cursor: pointer;
+}
