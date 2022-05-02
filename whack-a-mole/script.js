@@ -1,15 +1,15 @@
 const holes = document.querySelectorAll('.hole');
-  const scoreBoard = document.querySelector('.score');
-  const moles = document.querySelectorAll('.mole');
-  let lastHole;
-  let timeUp = false;
-  let score = 0;
+const scoreBoard = document.querySelector('.score');
+const moles = document.querySelectorAll('.mole');
+let lastHole;
+let timeUp = false;
+let score = 0;
 
-  function randomTime(min, max) { 
+function randomTime(min, max) { 
     return Math.round(Math.random() * (max - min) + min);
-  }
+}
 
-  function randomHole(holes) {
+function randomHole(holes) {
     const idx = Math.floor(Math.random() * holes.length);
     const hole = holes[idx];
     if (hole === lastHole) {
@@ -17,9 +17,9 @@ const holes = document.querySelectorAll('.hole');
     }
     lastHole = hole;
     return hole;
-  }
+}
 
-  function peep() {
+function peep() {
     const time = randomTime(500, 1000);
     const hole = randomHole(holes);
     hole.classList.add('up');
@@ -27,21 +27,21 @@ const holes = document.querySelectorAll('.hole');
       hole.classList.remove('up');
       if (!timeUp) peep();
     }, time);
-  }
+}
 
-  function startGame() {
+function startGame() {
     scoreBoard.textContent = 0;
     timeUp = false;
     score = 0;
     peep();
     setTimeout(() => timeUp = true, 20000)
-  }
+}
 
-  function whack(e) {
+function whack(e) {
     if(!e.isTrusted) return; 
     score++;
     this.parentNode.classList.remove('up');
     scoreBoard.textContent = score;
-  }
+}
 
-  moles.forEach(mole => mole.addEventListener('click', whack)); 
+moles.forEach(mole => mole.addEventListener('click', whack)); 
